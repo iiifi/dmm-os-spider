@@ -4,10 +4,7 @@
 package com.dmm.framework.modules.user.entity;
 
 import com.dmm.framework.common.mongo.MongoBean;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
 
 /**
  * 知乎用户Entity
@@ -40,12 +37,6 @@ public class UserInfo extends MongoBean {
 	private Integer followerQuestion;		// 关注的问题数
 	private String urlToken;		// url_token
 	private String authInfo;		// 认证信息
-	@Transient
-	private Date createTime;		// 创建时间
-	@Transient
-	private Date updateTime;		// 更新时间
-	@Transient
-	private Date deleteTime;		// 删除时间
 	private String isGrab;		// 0.未抓取1.已抓取
 	
 	public UserInfo() {
@@ -227,31 +218,6 @@ public class UserInfo extends MongoBean {
 	public void setAuthInfo(String authInfo) {
 		this.authInfo = authInfo;
 	}
-
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public Date getDeleteTime() {
-		return deleteTime;
-	}
-
-	public void setDeleteTime(Date deleteTime) {
-		this.deleteTime = deleteTime;
-	}
-
 	public String getIsGrab() {
 		return isGrab;
 	}

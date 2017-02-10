@@ -5,7 +5,6 @@ package com.dmm.framework.modules.user.service;
 
 import com.dmm.framework.common.mongo.MongoBaseService;
 import com.dmm.framework.modules.user.entity.UserInfo;
-import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -54,13 +53,12 @@ public class UserInfoService  extends MongoBaseService<UserInfo> {
 	 * @param userInfo
 	 * @return
 	 */
-	public int updateUserInfo(UserInfo userInfo){
+	public void updateUserInfo(UserInfo userInfo){
 		Query query = new Query(Criteria.where("_id").is(userInfo.getId()));
 		Update up = new Update();
 		up.set("isGrab", userInfo.getIsGrab());
-		up.set("updateTime",new Date());
-		WriteResult result = template.updateFirst(query, up, getTableName());
-		return result.getN();
+		up.set("updateDate",new Date());
+		template.updateFirst(query, up, "userInfo");
 	}
 
 	/**
