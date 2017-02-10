@@ -66,12 +66,9 @@ public class UserInfoService  extends MongoBaseService<UserInfo> {
 	 * @return
 	 */
 	public List<UserInfo> getUserInfoList(){
-		Query query=new Query(Criteria.where("followNum").gte(5));
+		Query query=new Query(Criteria.where("followNum").gte(5)).addCriteria(Criteria.where("isGrab").is("0"));
 		List<UserInfo> list=template.find(query, UserInfo.class, "userInfo");
-		if(!list.isEmpty()){
-			return list;
-		}
-		return  null;
+		return  list;
 	}
 	
 }
