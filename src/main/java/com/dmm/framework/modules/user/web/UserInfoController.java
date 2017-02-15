@@ -99,6 +99,13 @@ public class UserInfoController extends BaseController {
 		//getText("meng-xiao-hui-30", 56);
 		return "";
 	}
+
+	@RequestMapping("excute1")
+	@ResponseBody
+	public String excute1(){
+		getText("meng-xiao-hui-30", 56);
+		return "";
+	}
 	public void getText(String urlToken,int pageNo){
 		for(int i=0;i<=pageNo;i++){
 			Spider.create(parsePageProcessor)
